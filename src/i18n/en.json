@@ -1,0 +1,11 @@
+{
+  "app_title": "ResumeCraft Multilingual Resume Generator",
+  "title": "Resume Form",
+  "name": "Name",
+  "job": "Target Position",
+  "experience": "Experience",
+  "skills": "Skills",
+  "generate": "Generate with AI",
+  "export_pdf": "Export PDF",
+  "preview_placeholder": "AI-generated resume will appear here..."
+}

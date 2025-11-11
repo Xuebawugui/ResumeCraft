@@ -1,0 +1,11 @@
+{
+  "app_title": "ResumeCraft 多言語履歴書ジェネレーター",
+  "title": "履歴書フォーム",
+  "name": "氏名",
+  "job": "希望職種",
+  "experience": "経験",
+  "skills": "スキル",
+  "generate": "AI で生成",
+  "export_pdf": "PDF を出力",
+  "preview_placeholder": "AI の生成結果がここに表示されます..."
+}

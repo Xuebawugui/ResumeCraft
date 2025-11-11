@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+# ResumeCraft · 多语言简历生成器
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ResumeCraft 是一个支持 **中 / 英 / 日三语言** 的智能简历生成器。  
+使用 React + TypeScript + TailwindCSS + Groq AI 构建，支持在线编辑、AI 自动优化、简历实时预览以及 PDF 导出。
 
-Currently, two official plugins are available:
+在线 Demo：即将上线（Vercel 部署）
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ 功能特性
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ **三语言支持：中文 / English / 日本語**
+- ✅ **支持 Groq AI 自动生成/优化专业简历**
+- ✅ **React + TypeScript 工程化开发**
+- ✅ **i18next 国际化切换**
+- ✅ **实时预览简历**
+- ✅ **一键导出 PDF**
+- ✅ **JSON 导入 / 导出（可选）**
+- ✅ **适合求职日本 + 海外 IT 职位的展示项目**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ 技术栈
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 前端
+- React 18
+- TypeScript
+- Vite
+- TailwindCSS 3.x
+- i18next（国际化）
+- html2pdf.js（导出 PDF）
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### AI
+- Groq API（llama3-70b-8192）
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📁 项目结构
+
+ResumeCraft
+├── src
+│ ├── components
+│ │ ├── FormSection.tsx
+│ │ ├── ResumePreview.tsx
+│ │ ├── LanguageSwitcher.tsx
+│ │ └── PdfExportButton.tsx
+│ ├── pages
+│ │ └── Home.tsx
+│ ├── hooks
+│ │ └── useResumeData.ts
+│ ├── i18n
+│ │ ├── index.ts
+│ │ ├── zh.json
+│ │ ├── en.json
+│ │ └── jp.json
+│ ├── utils
+│ │ ├── ai.ts
+│ │ └── pdf.ts
+│ ├── styles
+│ │ └── global.css
+│ └── main.tsx
+├── public
+├── package.json
+└── README.md
+
+
+---
+
+## 🚀 本地开发
+
+```bash
+git clone https://github.com/yourname/ResumeCraft.git
+cd ResumeCraft
+npm install
+npm run dev
+
+环境变量
+
+在根目录创建 .env 文件：
+
+VITE_GROQ_KEY=your_api_key_here
+
+构建生产环境
+npm run build
+
+部署（Vercel 推荐）
+
+支持一键导入，自动识别 Vite 项目。
+
+---
+
+## 🧭 推送到 GitHub（Xuebawugui/ResumeCraft）
+
+请确保 `.env` 不被提交（已在 `.gitignore` 中忽略）。如果之前已被纳入版本管理请执行：
+
+```bash
+git rm --cached .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+初始化并推送到你的仓库：
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# 在本地仓库目录下
+git init
+git add .
+git commit -m "chore: init ResumeCraft"
+git branch -M main
+git remote add origin https://github.com/Xuebawugui/ResumeCraft.git
+git push -u origin main
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+开发与环境变量：
+
+```bash
+npm install
+
+# 前后端并行启动
+npm run dev:all
+
+# 或仅前端
+npm run dev
+
+# 在根目录创建 .env（参考 .env.example）
+GROQ_API_KEY=your_api_key_here
+# 可选：指定模型
+GROQ_MODEL=llama-3.3-70b-versatile
 ```

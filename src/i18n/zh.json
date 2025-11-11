@@ -1,3 +1,11 @@
 {
-  "app_title": "ResumeCraft 多语言简历生成器"
+  "app_title": "ResumeCraft 多语言简历生成器",
+  "title": "简历信息",
+  "name": "姓名",
+  "job": "求职岗位",
+  "experience": "经历",
+  "skills": "技能",
+  "generate": "AI 生成简历",
+  "export_pdf": "导出 PDF",
+  "preview_placeholder": "AI 结果会显示在这里..."
 }
