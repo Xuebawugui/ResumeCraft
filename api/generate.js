@@ -1,5 +1,9 @@
 import Groq from 'groq-sdk';
 
+export const config = {
+  runtime: 'nodejs20.x'
+};
+
 export default async function handler(req, res) {
   try {
     if (req.method !== 'POST') {
