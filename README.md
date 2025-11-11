@@ -125,3 +125,25 @@ GROQ_API_KEY=your_api_key_here
 # 可选：指定模型
 GROQ_MODEL=llama-3.3-70b-versatile
 ```
+
+---
+
+## 🚀 部署到 Vercel
+
+本项目已内置 Vercel 的 Serverless API（`api/generate.js`），无需额外后端服务即可在 Vercel 运行。
+
+步骤：
+
+1. 将代码推送到 GitHub（参考上文）。
+2. 登录 Vercel，点击 “New Project” → 选择你的仓库 `Xuebawugui/ResumeCraft`。
+3. 在 Vercel 项目设置中添加环境变量：
+   - `GROQ_API_KEY`: 你的 Groq API Key
+   - 可选 `GROQ_MODEL`: 例如 `llama-3.3-70b-versatile`
+4. 直接 Deploy。Vercel 会：
+   - 使用 `npm run build` 构建前端（输出目录 `dist`）
+   - 将 `/api/generate` 路由到 Serverless 函数（Node.js 20）
+
+说明：
+- 本地开发仍可使用 `npm run dev:all`（Vite 前端 + 本地 Express 后端），线上 Vercel 将自动使用 `api/generate`。
+- 前端通过相对路径 `fetch('/api/generate')` 调用，无需额外代理配置。
+- `.env` 不会被提交；线上通过 Vercel 的环境变量面板配置。
