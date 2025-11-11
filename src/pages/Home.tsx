@@ -1,4 +1,3 @@
-import { useState } from "react";
 import FormSection from "../components/FormSection";
 import ResumePreview from "../components/ResumePreview";
 import LanguageSwitcher from "../components/LanguageSwitcher";
